@@ -23,9 +23,7 @@
     },
     "scripts": {
         "check": [
-            "@test",
-            "@cs-check",
-            "@analyze"
+            "@test"
         ],
         "analyze": "phpstan analyze -l max -c phpstan.neon ./src",
         "cs-check": "phpcs",
