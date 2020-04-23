@@ -1,34 +1,30 @@
-# South African Personal ID Validator  
-Package to parse and validate South African ID Numbers.</p>  
+# PHP Data Structures 
+PHP Implementation of some classical data structures</p>  
 ## Installing
 
 ```shell
 
-$ composer require talifhani/za-id-parser -vvv
+$ composer require talifhani/php-data-structures -vvv
 
 ```
 
 ## Usage
 ```php
-use Talifhani\ZaIdParser\IDNumber;
-$idNumberData = (new  IDNumberParser($idNum))->parse();
+use Talifhani\PHPDataStructures\LinkedList\LinkedList;
 
-echo  "ID Number: ".$idNumberData->getIdNumber()."<br />";
-echo  "Birthdate: ".$idNumberData->getBirthdate()."<br />";
-echo  "Age: ".$idNumberData->getAge()."<br />";
-echo  "Citizenship: ".$idNumberData->getCitizenship()."<br />";
-echo  "Gender: ".$idNumberData->getGender()."<br />";
-echo  "Is Valid ID: ".($idNumberData->isValid() ? 'Yes' : 'No');
+$linkedList = new LinkedList();
 
-print_r($idNumberData->toArray());
+$linkedList->prepend(1);
+$linkedList->prepend(2);
+$linkedList->prepend(3);
+$linkedList->append(4);
+$linkedList->deleteByIndex(3);
+
+echo $linkedList;
+echo "|";
+echo "Size: ".$linkedList->size().'|'.$linkedList->indexOf(2);
 /*
-(
-    [birthdate] => 1988-09-15
-    [age] => 30
-    [gender] => Female
-    [citizenship] => South African
-    [valid] => 1
-)
+3-2-1|Size: 3|1
 */
 ```  
 

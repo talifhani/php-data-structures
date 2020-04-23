@@ -4,9 +4,14 @@ use Talifhani\PHPDataStructures\IndexOutOfBoundsException;
 
 class LinkedList implements ILinkedList
 {
-	/** @var mixed The head element of the list */
+	/** @var Node The head element of the list */
 	private $head = NULL;
 
+	/**
+	 * Add value at the beginning of the list
+	 *
+	 * @param $value
+	 */
 	public function prepend($value): void
 	{
 		$newNode = new Node($value);
@@ -17,6 +22,11 @@ class LinkedList implements ILinkedList
         $this->head = $newNode;
 	}
 
+	/**
+	 * Adds value at the end of the list
+	 *
+	 * @param $value
+	 */
     public function append($value): void
     {
         $lastNode = $this->peekLast();
@@ -27,12 +37,32 @@ class LinkedList implements ILinkedList
             $lastNode->nextNode = $newNode;
         }
     }
-	public function insert($value, $index): void{}
-    public function clear(): void{}
+
+	/**
+	 * @param $value
+	 * @param $index
+	 */
+	public function insert($value, $index): void
+	{
+
+	}
+
+	/**
+	 * Clears the list, removes all the elements
+	 */
+    public function clear(): void
+    {
+    	$this->head = NULL;
+    }
+
+	/**
+	 * @param $index
+	 * @return mixed|null
+	 */
     public function peekAtIndex($index)
     {
         if ($this->head == null OR $index < 0)
-            return NULL;
+            return null;
 
         $node = $this->head;
         $i = 0;
@@ -43,7 +73,11 @@ class LinkedList implements ILinkedList
 
         return $node;
     }
-    public function deleteByIndex($index)
+
+	/**
+	 * @param int $index
+	 */
+    public function deleteByIndex(int $index)
     {
         /** @todo this can be optimized to not loop through twice with peekAtIndex() */
         $nodeBefore = $this->peekAtIndex($index - 1);
@@ -58,12 +92,25 @@ class LinkedList implements ILinkedList
         }
     }
 
-    public function getFirst()
+	/**
+	 * @return Node|null
+	 */
+    public function getFirst(): Node
     {
-        return $this->head;
+    	if ($this->head == null)
+    		return null;
+
+    	$nextNode = $this->head->nextNode;
+
+	    $this->head = $nextNode;
+
+	    return $this->head;
     }
 
-    public function peekLast()
+	/**
+	 * @return Node|null
+	 */
+    public function peekLast(): Node
     {
 		if ($this->head == NULL)
 			return NULL;
@@ -86,10 +133,14 @@ class LinkedList implements ILinkedList
             $nodeBefore->nextNode = $nodeToGet->nextNode;
     }
 
+	/**
+	 * @param $value
+	 * @return int|null
+	 */
     public function indexOf($value)
     {
         if ($this->head == null)
-            return NULL;
+            return null;
         
         $node = $this->head;
         if ($node->value == $value)
@@ -103,9 +154,12 @@ class LinkedList implements ILinkedList
 
         }
 
-        return NULL;
+        return null;
     }
 
+	/**
+	 * @return int
+	 */
 	public function size(): int {
         if ($this->head == null)
             return 0;
@@ -118,11 +172,18 @@ class LinkedList implements ILinkedList
 
         return $i;
     }
+
+	/**
+	 * @param $index
+	 */
 	public function getByIndex($index){}
 
+	/**
+	 * @return string
+	 */
 	public function __toString()
 	{
-		if ($this->head == NULL)
+		if ($this->head == null)
 			return '';
 
         $node = $this->head;

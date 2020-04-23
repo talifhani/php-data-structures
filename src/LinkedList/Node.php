@@ -12,6 +12,6 @@ class Node
 
     public function __toString()
     {
-        return (string) $value;
+        return (string) $this->value;
     }
 }
