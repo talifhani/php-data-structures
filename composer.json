@@ -1,0 +1,35 @@
+{
+    "name": "talifhani/php-data-structures",
+    "description": "Some example code for data structures in php",
+    "license": "MIT",
+    "require-dev": {
+        "phpunit/phpunit": "^7.4"
+    },
+    "authors": [
+        {
+            "name": "Tali Luvhengo",
+            "email": "tali@semicolon.co.za"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Talifhani\\PHPDataStructures\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Talifhani\\PHPDataStructures\\": "test/"
+        }
+    },
+    "scripts": {
+        "check": [
+            "@test",
+            "@cs-check",
+            "@analyze"
+        ],
+        "analyze": "phpstan analyze -l max -c phpstan.neon ./src",
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+        "test": "phpunit"
+    }
+}
