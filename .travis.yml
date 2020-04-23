@@ -2,6 +2,6 @@ language: php
 php:
   - 7.3.11
 install:
-  - composer installs
+  - composer install
 script:
   - composer check
